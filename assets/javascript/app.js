@@ -68,11 +68,12 @@ function showProgress() {
 
 function showScores() {
     var gameOverHTML = "<h1>Result</h1>";
-    gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2";
+    gameOverHTML += "<h2 id='score'> Your score: " + quiz.score + "</h2";
     var element = document.getElementById("quiz");
     element.innerHTML = gameOverHTML;
 }
 
+    
 
 var questions = [
     new Question ("What does AJAX stand for?", ["The Bleach", "Application Java Association and XML", "Asynchronous JavaScript and XML", "All of the Above"], "Asynchronous JavaScript and XML"),    
