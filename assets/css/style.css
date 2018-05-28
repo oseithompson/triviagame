@@ -2,6 +2,7 @@ body {
     background-color: #eeeeee;    
 }
 .grid {
+    display: none;
     width: 700px;
     height: 775px;
     margin: 25px auto;

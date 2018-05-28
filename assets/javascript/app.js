@@ -1,3 +1,15 @@
+//Start the game
+
+var startButton = document.getElementById("start")
+startButton.addEventListener("click", function(){
+    console.log("hello")
+    document.getElementById("start").style.display = "none";
+    document.getElementsByClassName("grid")[0].style.display = "block";
+    console.log(document.getElementsByClassName("grid"))
+});
+
+
+
 //Questions
 
 function Question(text, choices, answer) {
@@ -26,11 +38,34 @@ Quiz.prototype.isEnded = function() {
 }
 
 Quiz.prototype.guess = function(answer) {
-    
+    // If this is the correct answer show 'Correct'
     if(this.getQuestionIndex().correctAnswer(answer)) {
         this.score++;
+        console.log("correct")
+        document.getElementById("quiz").style.display = "none";
+        document.getElementById("question-status").innerHTML="Correct";
+        
+        var answerButtons = document.getElementById("btn0", "btn1", "btn2", "btn3")
+        answerButtons.addEventListener("click", function(){
+        document.getElementById("btn0", "btn1", "btn2", "btn3").style.display = "none";
+        document.getElementsByClassName("grid")[0].style.display = "block";
+        console.log(document.getElementsByClassName("grid"))
+        });
+        
+        var downloadTimer = setInterval(function(){
+            timeleft--;
+            document.getElementById("countdowntimer").textContent = timeleft;
+        },
+        questions = ste3000);
+        
+
+        this.questionIndex++;
     }
-    this.questionIndex++;
+    else {console.log("wrong")
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("question-status").innerHTML="Wrong";
+}
+
 }
 // Functions to populate the questions
 function populate() {
@@ -73,8 +108,6 @@ function showScores() {
     element.innerHTML = gameOverHTML;
 }
 
-    
-
 var questions = [
     new Question ("What does AJAX stand for?", ["The Bleach", "Application Java Association and XML", "Asynchronous JavaScript and XML", "All of the Above"], "Asynchronous JavaScript and XML"),    
     
@@ -90,11 +123,15 @@ var quiz = new Quiz(questions);
 
 populate();
 
-//Timer
-var timeleft = 30;
+//Our Countdown Timer Object
+var timeleft = 5;
+
     var downloadTimer = setInterval(function(){
     timeleft--;
     document.getElementById("countdowntimer").textContent = timeleft;
     if(timeleft <= 0)
         clearInterval(downloadTimer);
+        //goto the next question
+        //reset timer
+        
     },1000);
